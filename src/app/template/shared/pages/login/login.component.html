@@ -1,0 +1,21 @@
+<div class="flex justify-center items-center h-screen">
+  <mat-card appearance="outlined" class="p-5 w-96">
+    <mat-card-title class="text-center">Sistema Hotelero</mat-card-title>
+    <form (ngSubmit)="loginSubmit()" class="flex flex-col" [formGroup]="loginForm">
+      <div class="w-full flex justify-center my-3">
+        <img src="assets/img/logo.jpg" alt="Logo" class="w-28 rounded-full">
+      </div>
+      <mat-form-field>
+        <mat-label>User name:</mat-label>
+        <input type="text" matInput placeholder="User_name" formControlName="user_name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password:</mat-label>
+        <input type="password" matInput placeholder="*************" formControlName="password">
+      </mat-form-field>
+
+      <button mat-flat-button>Ingresar</button>
+    </form>
+  </mat-card>
+</div>

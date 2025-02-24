@@ -1,0 +1,51 @@
+<div class="p-5 w-96">
+  <div class="flex justify-between">
+    <p class="text-lg">Crear Tipo Habitacion</p>
+    <button (click)="onNoClick()" class="cursor-pointer hover:text-red-500 transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  <form [formGroup]="loginCreateTipoHabitacion">
+    <mat-form-field class="example-full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="Nombre" formControlName="nombre">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Descripcion</mat-label>
+      <textarea matInput placeholder="Descripcion" formControlName="descripcion"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Capacidad</mat-label>
+      <input type="number" matInput placeholder="capacidad" formControlName="capacidad">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>precioBase</mat-label>
+      <input type="number" matInput placeholder="capacidad" formControlName="precioBase">
+    </mat-form-field>
+
+    <div class="flex justify-end gap-x-3">
+      <button (click)="onNoClick()"
+        class="cursor-pointer hover:text-red-500 transition-colors flex gap-x-1 text-green-500">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+        Cancel
+      </button>
+      <button
+        class="flex items-center gap-x-1 bg-green-500 text-white px-3 py-1 rounded-xl hover:bg-green-600 transition-colors cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+        </svg>
+        Save
+      </button>
+    </div>
+  </form>
+</div>

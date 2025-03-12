@@ -1,11 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 
 import {
   MatDialog,
-  MatDialogTitle,
-  MatDialogContent,
 } from '@angular/material/dialog';
 import { CrearTipoHabitacionComponent } from '../crear-tipo-habitacion/crear-tipo-habitacion.component';
+import { CategoriaHabitacion } from '../../../../domain';
 
 @Component({
   selector: 'component-botones-principales',
@@ -15,12 +14,14 @@ import { CrearTipoHabitacionComponent } from '../crear-tipo-habitacion/crear-tip
 })
 export class BotonesPrincipalesComponent {
   private readonly dialog = inject(MatDialog);
+  tipoHabitacionCreado = output<CategoriaHabitacion>();
 
   public openDialog() {
-    this.dialog.open(CrearTipoHabitacionComponent, {
-      data: {
-        animal: 'panda',
-      },
+    const dialogRef = this.dialog.open(CrearTipoHabitacionComponent);
+    dialogRef.afterClosed().subscribe((result: CategoriaHabitacion) => {
+      if (result) {
+        this.tipoHabitacionCreado.emit(result);
+      }
     });
   }
 }

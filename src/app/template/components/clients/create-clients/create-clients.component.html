@@ -8,26 +8,36 @@
       </svg>
     </button>
   </div>
-  <form (submit)="createTipoHabitacion()" [formGroup]="formCreateTipoHabitacion">
+  <form (ngSubmit)="submitCreateClient()" [formGroup]="createClientForm">
     <mat-form-field class="example-full-width">
       <mat-label>Nombre</mat-label>
       <input matInput placeholder="Nombre" formControlName="nombre">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <mat-label>Descripcion</mat-label>
-      <textarea matInput placeholder="Descripcion" formControlName="descripcion"></textarea>
+      <mat-label>Apellio Paterno</mat-label>
+      <input matInput placeholder="Apellio Paterno" formControlName="apellido_paterno">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <mat-label>Capacidad</mat-label>
-      <input type="number" matInput placeholder="capacidad" formControlName="capacidad">
+      <mat-label>Apellio Materno</mat-label>
+      <input matInput placeholder="Apellio Materno" formControlName="apellido_materno">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <mat-label>precioBase</mat-label>
-      <input type="number" matInput placeholder="capacidad" formControlName="precioBase">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" placeholder="Email" formControlName="email">
     </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" placeholder="Password" formControlName="password">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Edad</mat-label>
+      <input matInput type="number" placeholder="Edad" formControlName="edad">
+    </mat-form-field>
+
 
     <div class="flex justify-end gap-x-3">
       <button (click)="onNoClick()"
@@ -48,4 +58,6 @@
       </button>
     </div>
   </form>
+
+  <h1>Crear</h1>
 </div>

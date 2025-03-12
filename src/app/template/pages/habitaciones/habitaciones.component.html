@@ -1,5 +1,6 @@
-<section class="w-[97%]  ">
-  <component-botones-principales (tipoHabitacionCreado)="onTipoHabitacionCreada()" />
+<section class="w-[97%]">
+  <components-botones-principales (habitacion)="onHabitacionCreada()" />
+
   <div class="bg-white border border-gray-300 rounded w-full mt-5 p-5">
     <p class="text-xl">Listado de los Tipos de habitaciones</p>
     <div>
@@ -23,15 +24,14 @@
             <th class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100">
               <p
                 class="flex items-center justify-between gap-2 font-sans text-sm  font-normal leading-none text-slate-500">
-                Capacidad
+                Tipo Habitacion
 
               </p>
             </th>
             <th class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100">
               <p
                 class="flex items-center justify-between gap-2 font-sans text-sm  font-normal leading-none text-slate-500">
-                Precio
-
+                Estado de la Habitacion
               </p>
             </th>
             <th class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100">
@@ -49,7 +49,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (item of getTipoHabitaciones.value(); track item.id) {
+          @for (item of getHabitaciones.value(); track item.id) {
           <tr>
             <td class="p-4 border-b border-slate-200">
               <div class="flex items-center gap-3">
@@ -58,20 +58,21 @@
             </td>
             <td class="p-4 border-b border-slate-200">
               <div>
-                {{item.nombre}}
+                {{item.numero_habitacion}}
               </div>
             </td>
             <td class="p-4 border-b border-slate-200">
-              {{item.capacidad}}
+              {{item.Categoria_habitaciones.nombre}}
             </td>
             <td class="p-4 border-b border-slate-200">
               <p class="text-sm text-slate-500">
-                {{item.precioBase}}
+                {{item.Estado_habitacion.nombre}}
               </p>
             </td>
             <td class="p-4 border-b border-slate-200">
               <div class="w-max">
-                <button (click)="updateStatus(item.id)" [ngClass]="{
+
+                <button (click)="updateHabitaciones(item.id)" [ngClass]="{
                   'bg-green-500/20': item.status,
                   'bg-red-500/20': !item.status,
                   'relative grid text-green-900 items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-md select-none whitespace-nowrap cursor-pointer': true
@@ -82,7 +83,8 @@
             </td>
             <td class=" p-4 border-b border-slate-200">
               <div class="w-max">
-                <button (click)="openDialogUpdate(item.id)" class="cursor-pointer">
+
+                <button (click)="openialigUpdate(item.id)" class="cursor-pointer">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6 text-yellow-500">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -98,4 +100,5 @@
       </table>
     </div>
   </div>
+
 </section>

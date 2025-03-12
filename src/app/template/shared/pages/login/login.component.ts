@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 // Mis Servicios
 import { AuthService } from '../../../../application/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -30,6 +31,7 @@ import { AuthService } from '../../../../application/services/auth/auth.service'
 export class LoginComponent {
   private readonly fb = inject(FormBuilder);
   private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
 
   loginForm: FormGroup = this.fb.group({
     user_name: ['', Validators.required],
@@ -38,7 +40,11 @@ export class LoginComponent {
 
   loginSubmit() {
     return this.authService.login(this.loginForm.value).subscribe({
-      next: console.log,
+      next: (r) => {
+        localStorage.setItem('token', r.token);
+        localStorage.setItem('user', JSON.stringify(r.user));
+        this.router.navigateByUrl('/dashboard/incio');
+      },
       error: console.error,
     });
   }

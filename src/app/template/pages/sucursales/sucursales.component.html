@@ -1,0 +1,113 @@
+<section class="w-[97%]">
+  <components-botones-principales (sucursal)="onSucursalesCreado()" />
+
+  <div class="container mx-auto px-4 sm:px-8">
+    <div class="py-8">
+      <div>
+        <h2 class="text-2xl font-semibold leading-tight">Sucursales</h2>
+      </div>
+      <div class="my-2 flex sm:flex-row flex-col">
+        <div class="block relative">
+          <span class="h-full absolute inset-y-0 left-0 flex items-center pl-2">
+            <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">
+              <path
+                d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z">
+              </path>
+            </svg>
+          </span>
+          <input placeholder="Search"
+            class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
+        </div>
+      </div>
+      <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+        <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+          <table class="min-w-full leading-normal">
+            <thead>
+              <tr>
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Id
+                </th>
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Nombre
+                </th>
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Direccion
+                </th>
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Status
+                </th>
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Acciones
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of getSucursales.value()?.data; track item.id) {
+              <tr>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <p class="text-gray-900 whitespace-no-wrap">
+                    {{item.id}}
+                  </p>
+                </td>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <p class="text-gray-900 whitespace-no-wrap">
+                    {{item.nombre}}
+                  </p>
+                </td>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <p class="text-gray-900 whitespace-no-wrap">
+                    {{item.direccion}}
+                  </p>
+                </td>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <div class="w-max">
+
+                    <button (click)="updateStatus(item.id)" [ngClass]="{
+                      'bg-green-500/20': item.status,
+                      'bg-red-500/20': !item.status,
+                      'relative grid text-green-900 items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-md select-none whitespace-nowrap cursor-pointer': true
+                    }">
+                      <span>{{ item.status ? 'Activo' : 'Inactivo' }}</span>
+                    </button>
+                  </div>
+                </td>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <button class="cursor-pointer text-yellow-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                      stroke="currentColor" class="size-6">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                    </svg>
+
+                  </button>
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+          <div class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
+            <span class="text-xs xs:text-sm text-gray-900">
+              Total de Sucursales {{getSucursales.value()?.meta?.total}}
+            </span>
+            <div class="inline-flex mt-2 xs:mt-0 gap-x-2">
+              <button (click)="nextPage(-1)"
+                class=" text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded">
+                Prev
+              </button>
+              <button (click)="nextPage(1)"
+                class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded">
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

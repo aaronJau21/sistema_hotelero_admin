@@ -16,16 +16,28 @@ export class CrearTipoHabitacionComponent {
   private readonly dialog = inject(MatDialogRef<CrearTipoHabitacionComponent>);
   private readonly fb = inject(FormBuilder);
   private readonly service = inject(TipoHabitacionService);
-  data = inject(MAT_DIALOG_DATA);
 
   onNoClick(): void {
     this.dialog.close();
   }
 
-  public loginCreateTipoHabitacion: FormGroup = this.fb.group({
+  public formCreateTipoHabitacion: FormGroup = this.fb.group({
     nombre: [''],
     descripcion: [''],
     precioBase: [''],
     capacidad: [''],
   });
+
+  createTipoHabitacion() {
+    return this.service
+      .createTipoHabitacion(this.formCreateTipoHabitacion.value)
+      .subscribe({
+        next: (res) => {
+          this.dialog.close(res);
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
 }

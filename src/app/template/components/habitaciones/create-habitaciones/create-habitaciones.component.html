@@ -8,25 +8,53 @@
       </svg>
     </button>
   </div>
-  <form (submit)="createTipoHabitacion()" [formGroup]="formCreateTipoHabitacion">
+  <form (ngSubmit)="createHabitacion()" [formGroup]="formCreateHabitacion">
     <mat-form-field class="example-full-width">
-      <mat-label>Nombre</mat-label>
-      <input matInput placeholder="Nombre" formControlName="nombre">
+      <mat-label>Numero Habitacion</mat-label>
+      <input matInput placeholder="Numero Habitacion" formControlName="numero_habitacion">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Sucursal</mat-label>
+      <mat-select formControlName="id_sucursal">
+        @for (item of getSucursales.value(); track item.id) {
+        <mat-option [value]="item.id">
+          {{item.nombre}}
+        </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Categoria Habitacion</mat-label>
+      <mat-select formControlName="id_categoria">
+        @for (category of getTipoHabitacion.value(); track category.id) {
+        <mat-option [value]="category.id">
+          {{category.nombre}}
+        </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Estado Habitacion</mat-label>
+      <mat-select formControlName="id_estado_habitacion">
+        @for (category of getEstadoHabitacion.value(); track category.id) {
+        <mat-option [value]="category.id">
+          {{category.nombre}}
+        </mat-option>
+        }
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Descripcion</mat-label>
-      <textarea matInput placeholder="Descripcion" formControlName="descripcion"></textarea>
+      <textarea matInput placeholder="Descripcion..." formControlName="descripcion"></textarea>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <mat-label>Capacidad</mat-label>
-      <input type="number" matInput placeholder="capacidad" formControlName="capacidad">
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-      <mat-label>precioBase</mat-label>
-      <input type="number" matInput placeholder="capacidad" formControlName="precioBase">
+      <mat-label>Servicios incluidos</mat-label>
+      <textarea matInput placeholder="Servicios incluidos" formControlName="servicios_incluidos"></textarea>
     </mat-form-field>
 
     <div class="flex justify-end gap-x-3">
@@ -48,4 +76,6 @@
       </button>
     </div>
   </form>
+
+  <h1>Crear</h1>
 </div>

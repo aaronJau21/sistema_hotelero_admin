@@ -35,6 +35,11 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./template/pages/clients/clients.component'),
       },
+      {
+        path: 'departamentos',
+        loadComponent: () =>
+          import('./template/pages/departamentos/departamentos.component'),
+      },
       { path: '', redirectTo: '/dashboard/incio', pathMatch: 'full' },
     ],
   },

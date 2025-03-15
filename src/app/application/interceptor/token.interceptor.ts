@@ -6,6 +6,7 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
 
   if (token && !req.headers.has('Authorization')) {
     const authReq = req.clone({
+      withCredentials: true,
       headers: new HttpHeaders({
         ...req.headers.keys().reduce((acc, key) => {
           acc[key] = req.headers.get(key) ?? ''; // Usa '' como valor por defecto si es null

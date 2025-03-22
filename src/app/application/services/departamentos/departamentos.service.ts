@@ -15,4 +15,12 @@ export class DepartamentosService {
     const url = `${this._api}/departamentos/status/${id}`;
     return this._http.get<IGetDepartamento>(url);
   }
+
+  public updateDepartamento(
+    id: number,
+    name: string
+  ): Observable<IGetDepartamento> {
+    const url = `${this._api}/departamentos/${id}`;
+    return this._http.patch<IGetDepartamento>(url, { nombre: name });
+  }
 }

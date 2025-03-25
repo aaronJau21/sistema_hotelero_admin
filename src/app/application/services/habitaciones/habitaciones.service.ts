@@ -12,27 +12,27 @@ export class HabitacionesService {
   private readonly url = environment.URL_API;
 
   getHabitaciones(): Observable<IGetHabitaciones[]> {
-    return this.http.get<IGetHabitaciones[]>(`${this.url}/habitaciones`);
+    return this.http.get<IGetHabitaciones[]>(`${this.url}/Habitaciones`);
   }
 
   createHabitaciones(data: CreateHabitacionDto): Observable<IGetHabitaciones> {
     const token = localStorage.getItem('token');
     console.log(token);
-    return this.http.post<IGetHabitaciones>(`${this.url}/habitaciones`, data);
+    return this.http.post<IGetHabitaciones>(`${this.url}/Habitaciones`, data);
   }
 
   findOne(id: number): Observable<IGetHabitaciones> {
-    return this.http.get<IGetHabitaciones>(`${this.url}/habitaciones/${id}`);
+    return this.http.get<IGetHabitaciones>(`${this.url}/Habitaciones/${id}`);
   }
 
   update(id: number, data: CreateHabitacionDto): Observable<IGetHabitaciones> {
-    const url = `${this.url}/habitaciones/${id}`;
+    const url = `${this.url}/Habitaciones/${id}`;
     return this.http.patch<IGetHabitaciones>(url, data);
   }
 
   update_status(id: number): Observable<IGetHabitaciones> {
     return this.http.patch<IGetHabitaciones>(
-      `${this.url}/habitaciones/status/${id}`,
+      `${this.url}/Habitaciones/status/${id}`,
       null
     );
   }

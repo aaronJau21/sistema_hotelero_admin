@@ -45,7 +45,7 @@ export class CreateHabitacionesComponent {
   });
 
   public formCreateHabitacion: FormGroup = this.fb.group({
-    numero_habitacion: [''],
+    NumeroHabitacion : [''],
     id_categoria: [0],
     id_estado_habitacion: [0],
     descripcion: [''],

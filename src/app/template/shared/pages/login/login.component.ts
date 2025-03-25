@@ -34,7 +34,7 @@ export class LoginComponent {
   private readonly router = inject(Router);
 
   loginForm: FormGroup = this.fb.group({
-    user_name: ['', Validators.required],
+    UserName: ['', Validators.required],
     password: ['', Validators.required],
   });
 

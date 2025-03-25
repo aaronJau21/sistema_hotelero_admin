@@ -16,22 +16,22 @@ export class SucursalesService {
   private readonly _api = environment.URL_API;
 
   getAllSucursales(queryPage: number): Observable<IGetAllSucursales> {
-    const url = `${this._api}/sucursales?page=${queryPage}&limit=10`;
+    const url = `${this._api}/SucusalesHoteles?page=${queryPage}&pageSize=10`;
     return this._http.get<IGetAllSucursales>(url);
   }
 
   getAllSelect():Observable<ISucursal[]> {
-    const url = `${this._api}/sucursales/select`;
+    const url = `${this._api}/SucusalesHoteles/select`;
     return this._http.get<ISucursal[]>(url);
   }
 
   updateStatusSucursal(id: number): Observable<ISucursal> {
-    const url = `${this._api}/sucursales/status/${id}`;
+    const url = `${this._api}/SucusalesHoteles/status/${id}`;
     return this._http.patch<ISucursal>(url, {});
   }
 
   createSucursal(data: CreateSucursalDto): Observable<ISucursal> {
-    const url = `${this._api}/sucursales`;
+    const url = `${this._api}/SucusalesHoteles`;
     return this._http.post<ISucursal>(url, data);
   }
 }

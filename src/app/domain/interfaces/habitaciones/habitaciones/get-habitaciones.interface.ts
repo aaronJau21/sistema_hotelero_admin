@@ -1,9 +1,11 @@
 export interface IGetHabitaciones {
   id: number;
-  numero_habitacion: string;
+  numeroHabitacion: string;
   id_categoria: number;
   id_estado_habitacion: number;
   status: boolean;
+  estadoHabitacion: string;
+  category: string;
   id_user: number;
   id_sucursal: number;
   descripcion: null | string;

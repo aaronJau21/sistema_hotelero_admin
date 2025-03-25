@@ -52,7 +52,7 @@ export class UpdateHabitacionesComponent {
 
   public formHabitacion: FormGroup = this.fb.group({
     numero_habitacion: [
-      this.getFindOneHabitacion.value()?.numero_habitacion,
+      this.getFindOneHabitacion.value()?.numeroHabitacion,
       Validators.required,
     ],
     id_categoria: [this.getFindOneHabitacion.value()?.id_categoria],
@@ -71,7 +71,7 @@ export class UpdateHabitacionesComponent {
       const habitacion = this.getFindOneHabitacion.value();
       if (habitacion) {
         this.formHabitacion.patchValue({
-          numero_habitacion: habitacion.numero_habitacion,
+          numero_habitacion: habitacion.numeroHabitacion,
           id_categoria: habitacion.id_categoria,
           id_estado_habitacion: habitacion.id_estado_habitacion,
           descripcion: habitacion.descripcion,

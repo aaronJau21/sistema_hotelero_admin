@@ -12,7 +12,7 @@ export class EstadoHhabitacionService {
   private readonly url = environment.URL_API;
 
   getEstadoHabitacion(): Observable<IGetEstadoHabitacion[]> {
-    const url = `${this.url}/estados/habitacion`;
+    const url = `${this.url}/Estados/habitacion`;
     return this.http.get<IGetEstadoHabitacion[]>(url);
   }
 }

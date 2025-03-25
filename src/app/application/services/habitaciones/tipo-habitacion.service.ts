@@ -15,22 +15,22 @@ export class TipoHabitacionService {
   createTipoHabitacion(
     data: CreteTipoHabitacionDto
   ): Observable<CategoriaHabitacion> {
-    const url = `${this.baseUrl}/tipo-habitacion`;
+    const url = `${this.baseUrl}/TipoHabitaciones`;
     return this.http.post<CategoriaHabitacion>(url, data);
   }
 
   getTipo_habitaciones(): Observable<IGetCategoryHabitacion[]> {
-    const url = `${this.baseUrl}/tipo-habitacion`;
+    const url = `${this.baseUrl}/TipoHabitaciones`;
     return this.http.get<IGetCategoryHabitacion[]>(url);
   }
 
   getTipo_habitacion(id: number): Observable<IGetCategoryHabitacion> {
-    const url = `${this.baseUrl}/tipo-habitacion/${id}`;
+    const url = `${this.baseUrl}/TipoHabitaciones/${id}`;
     return this.http.get<IGetCategoryHabitacion>(url);
   }
 
   updateStatus(id: number) {
-    const url = `${this.baseUrl}/tipo-habitacion/status/${id}`;
+    const url = `${this.baseUrl}/TipoHabitaciones/status/${id}`;
     return this.http.patch(url, {});
   }
 
@@ -38,7 +38,7 @@ export class TipoHabitacionService {
     id: number,
     data: CreteTipoHabitacionDto
   ): Observable<CategoriaHabitacion> {
-    const url = `${this.baseUrl}/tipo-habitacion/${id}`;
+    const url = `${this.baseUrl}/TipoHabitaciones/${id}`;
     return this.http.patch<CategoriaHabitacion>(url, data);
   }
 }
